@@ -1161,9 +1161,1011 @@ export const CARDS = [
       'Avec des cordes très mouillées ou verglacées, l\'efficacité diminue — 4 spires dans ce cas.',
       'Bloquer manuellement en serrant les spires — ne jamais compter sur 1 ou 2 tours seulement.',
     ]
-  }
+  },
+
+  // ═══════════════════════════════════════════════
+  //  NŒUDS (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'noeud-huit',
+    categoryId: 'noeuds',
+    type: 'noeud',
+    title: 'Nœud de huit',
+    summary: 'Nœud d\'arrêt et de jonction fiable, ne se bloque pas sous charge et reste démêlable. Standard en escalade et spéléologie.',
+    usages: ['Nœud d\'arrêt en bout de corde', 'Jonction en boucle (huit sur boucle)', 'Nœud de sécurité autonome', 'Attachement à un baudrier'],
+    steps: [
+      'Former une boucle en passant la corde par-dessus elle-même.',
+      'Faire un tour complet supplémentaire pour créer la forme en "8".',
+      'Passer l\'extrémité dans la boucle du bas, en remontant de dessous.',
+      'Serrer en tirant les deux brins.',
+      'Variante "sur boucle" : former le huit à double, puis rentrer la boucle résultante dans un mousqueton.',
+    ],
+    attention: [
+      'Le nœud de huit peut se serrer très dur après charge importante — préférer le nœud de chaise dans ce cas.',
+      'Toujours vérifier que la forme en "8" est bien visible et non croisée avant de charger.',
+      'En rappel, le huit sur boucle doit être accompagné d\'un nœud de sécurité.',
+    ]
+  },
+
+  {
+    id: 'noeud-plat',
+    categoryId: 'noeuds',
+    type: 'noeud',
+    title: 'Nœud plat (nœud carré)',
+    summary: 'Nœud de jonction symétrique pour relier deux brins de même diamètre. Rapide à faire, mais glisse si les cordes sont de diamètres différents.',
+    usages: ['Bandage et premiers secours', 'Fermeture d\'un sac', 'Jonction provisoire de cordes de même épaisseur'],
+    steps: [
+      'Prendre une extrémité dans chaque main.',
+      'Croiser la corde droite par-dessus la gauche et passer dessous.',
+      'Croiser à nouveau, cette fois la corde gauche par-dessus la droite.',
+      'Serrer en tirant les deux extrémités opposées.',
+      'Vérifier la symétrie : les deux boucles doivent être du même côté.',
+    ],
+    attention: [
+      'NE PAS utiliser pour relier deux cordes de diamètres différents (glisse sous charge).',
+      'Ne jamais utiliser comme nœud de sécurité en hauteur — il peut se défaire.',
+      'Un nœud plat mal exécuté devient un "nœud de vache" qui se défait facilement : vérifier la symétrie.',
+    ]
+  },
+
+  {
+    id: 'noeud-demi-cle',
+    categoryId: 'noeuds',
+    type: 'noeud',
+    title: 'Tour mort et deux demi-clés',
+    summary: 'Amarrage classique et solide sur un support cylindrique. Résiste bien aux tractions alternées, contrairement au cabestan.',
+    usages: ['Amarrage d\'une embarcation', 'Fixation d\'une corde à un arbre ou poteau', 'Départ de nombreux nœuds d\'amarrage'],
+    steps: [
+      'Faire un tour mort complet autour du support (un tour = 360°).',
+      'Former une première demi-clé : passer l\'extrémité sous le brin porteur et ressortir.',
+      'Former une deuxième demi-clé dans le même sens.',
+      'Serrer les deux demi-clés contre le tour mort.',
+      'Pour sécuriser : ajouter une troisième demi-clé ou bloquer avec un nœud d\'arrêt.',
+    ],
+    attention: [
+      'Le sens des deux demi-clés doit être identique, sinon le nœud se défait sous charge alternée.',
+      'Le tour mort seul ne bloque pas — les deux demi-clés sont obligatoires.',
+      'Sur support lisse ou mouillé, ajouter un tour mort supplémentaire.',
+    ]
+  },
+
+  {
+    id: 'noeud-ancrage',
+    categoryId: 'noeuds',
+    type: 'noeud',
+    title: 'Nœud de tête d\'alouette',
+    summary: 'Boucle autour d\'un support sans passer l\'extrémité — idéal pour attacher rapidement à un anneau ou un arbre.',
+    usages: ['Attachement rapide à un anneau ou piton', 'Lien de charge légère', 'Fixation d\'un remorquage'],
+    steps: [
+      'Former deux boucles identiques dans la même direction.',
+      'Rabattre l\'une sur l\'autre pour qu\'elles se superposent.',
+      'Passer le support (anneau, branche) à travers les deux boucles superposées.',
+      'Tirer les deux extrémités pour serrer.',
+    ],
+    attention: [
+      'Ne jamais utiliser pour sécurité vie sous charge dynamique : peut se retourner et se défaire.',
+      'Convient pour charges statiques modérées uniquement.',
+      'Sur support trop épais, les boucles ne se superposent pas bien — utiliser un cabestan à la place.',
+    ]
+  },
+
+  // ═══════════════════════════════════════════════
+  //  PLANTES (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'plante-ail-ours',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Ail des ours',
+    nameLatin: 'Allium ursinum',
+    summary: 'Plante printanière au puissant arôme d\'ail. Feuilles entièrement comestibles crues ou cuites. Confusions dangereuses à connaître absolument.',
+    tags: ['Comestible (excellent)', 'Printanier', 'Confusions mortelles possibles'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Allium_ursinum_-_Keukenhof.jpg/640px-Allium_ursinum_-_Keukenhof.jpg',
+      credit: 'BotBln, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Plante vivace de sous-bois humides. Feuilles larges, elliptiques, vert brillant, portées par un pétiole canaliculé. Fleurs blanches en ombelle étoilée (avril-mai). Toute la plante dégage une odeur d\'ail très prononcée à la moindre froissure. Souvent en vastes colonies.',
+    infoGrid: [
+      { label: 'Période', value: 'Feuilles : mars-mai (avant floraison)' },
+      { label: 'Habitat', value: 'Sous-bois frais et humides, ripisylves' },
+      { label: 'Comestible', value: 'Feuilles crues (salade, pesto) ou cuites. Fleurs et bulbes comestibles.' },
+      { label: 'Critère absolu', value: 'Odeur d\'ail franche à la froissure de la feuille' }
+    ],
+    confusions: [
+      { name: 'Muguet (Convallaria majalis)', risk: 'MORTEL — feuilles similaires mais AUCUNE odeur d\'ail. Toute la plante est extrêmement toxique (glucosides cardiotoxiques). Pousser dans les mêmes milieux. Règle : si ça ne sent pas l\'ail → ne pas consommer.' },
+      { name: 'Arum tacheté (Arum maculatum)', risk: 'TOXIQUE — feuilles plus triangulées avec nervures caractéristiques, souvent tachetées de brun. Aucune odeur d\'ail. Irritant et toxique (oxalates de calcium).' },
+      { name: 'Colchique d\'automne (Colchicum autumnale)', risk: 'MORTEL — feuilles au printemps pouvant ressembler. Aucune odeur d\'ail. Contient de la colchicine, mortelle.' }
+    ],
+    certitude: 'Règle unique et absolue : froissez une feuille et sentez — l\'odeur d\'ail doit être franche et immédiate. Sans odeur d\'ail = ne pas consommer. Niveau requis : moyen (la règle olfactive est fiable mais doit être appliquée à chaque cueillette).'
+  },
+
+  {
+    id: 'plante-pissenlit',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Pissenlit',
+    nameLatin: 'Taraxacum officinale',
+    summary: 'Plante comestible intégrale et très commune. Feuilles, fleurs et racines sont utilisables. L\'une des meilleures plantes de survie d\'Europe.',
+    tags: ['Comestible (entier)', 'Médicinal', 'Très commun'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Dandelion.jpg/640px-Dandelion.jpg',
+      credit: 'Nevit Dilmen, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Rosette basale de feuilles profondément découpées en lobes rétrorses (dents pointées vers la base). Hampe florale creuse, à latex blanc. Capitule jaune vif, unique par hampe. Aigrettes blanches soyeuses (globe blanc). Racine pivotante épaisse.',
+    infoGrid: [
+      { label: 'Période', value: 'Toute l\'année (feuilles), mars-octobre (fleurs)' },
+      { label: 'Habitat', value: 'Partout : prairies, chemins, jardins' },
+      { label: 'Comestible', value: 'Feuilles (salade, cru ou cuit), fleurs (beignets, sirop), racine (café de chicorée)' },
+      { label: 'Médicinal', value: 'Diurétique, soutien hépatique (usage traditionnel validé en phytothérapie)' }
+    ],
+    confusions: [
+      { name: 'Laiteron (Sonchus spp.)', risk: 'Comestible également — feuilles épineuses, tige creuse avec latex, capitules groupés. Confusion sans risque.' },
+      { name: 'Épervière (Hieracium spp.)', risk: 'Non toxique, feuilles plus entières ou peu découpées. Confusion sans conséquence.' }
+    ],
+    certitude: 'Identification très facile. La hampe creuse à latex blanc et le capitule unique jaune sont infaillibles. Niveau requis : très faible.'
+  },
+
+  {
+    id: 'plante-achillee',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Achillée millefeuille',
+    nameLatin: 'Achillea millefolium',
+    summary: 'Plante médicinale de premier plan en terrain. Hémostatique reconnue : la feuille fraîche froissée appliquée stoppe les saignements mineurs.',
+    tags: ['Médicinal', 'Hémostatique', 'Comestible (aromatique)', 'Très commun'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Achillea_millefolium_20050815_002.jpg/640px-Achillea_millefolium_20050815_002.jpg',
+      credit: 'Bogdan, CC BY-SA 2.5, Wikimedia Commons'
+    },
+    description: 'Feuilles très découpées (pennatiséquées), ressemblant à des plumes, douces au toucher. Tiges rigides portant des corymbes de petites fleurs blanches (parfois roses). Odeur aromatique caractéristique. Très commune dans les prairies, talus, chemins.',
+    infoGrid: [
+      { label: 'Période', value: 'Juin à octobre (floraison)' },
+      { label: 'Habitat', value: 'Prairies, talus, chemins, lieux secs' },
+      { label: 'Médicinal', value: 'Feuille fraîche froissée sur plaie : hémostatique. Infusion : antipyrétique (usage traditionnel).' },
+      { label: 'Comestible', value: 'Jeunes feuilles crues ou cuites, aromatiques (goût amer prononcé)' }
+    ],
+    confusions: [
+      { name: 'Persil fou / Grande ciguë (Conium maculatum)', risk: 'MORTEL — feuilles découpées similaires, mais tige creuse avec taches pourpres à la base, odeur de souris très désagréable. L\'achillée a une tige pleine, laineuse, et une odeur aromatique agréable.' },
+      { name: 'Cerfeuil sauvage (Anthriscus sylvestris)', risk: 'Non toxique en petite quantité, mais famille Apiacées — feuilles découpées, tige creuse. Critère : l\'achillée est laineuse/velue, odeur aromatique distincte.' }
+    ],
+    certitude: 'La texture laineuse des feuilles et l\'odeur aromatique caractéristique sont des critères fiables. Ne jamais confondre avec les Apiacées à tiges creuses. Niveau requis : moyen.'
+  },
+
+  {
+    id: 'plante-ronce',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Ronce commune',
+    nameLatin: 'Rubus fruticosus',
+    summary: 'Arbuste épineux aux mûres noires comestibles. Feuilles, tiges jeunes et fruits sont utilisables. Présente partout en France.',
+    tags: ['Comestible (fruits, feuilles jeunes)', 'Médicinal', 'Très commun'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ripe-blackberries.jpg/640px-Ripe-blackberries.jpg',
+      credit: 'Cody, domaine public, Wikimedia Commons'
+    },
+    description: 'Arbuste rampant ou sarmenteux, tiges portant des aiguillons recourbés. Feuilles composées de 3-5 folioles dentées, vertes dessus, blanchâtres dessous. Fleurs blanches à roses. Fruits en agrégats de drupéoles noires brillantes à maturité (août-octobre). Très variable botaniquement (plusieurs centaines de microespèces).',
+    infoGrid: [
+      { label: 'Période', value: 'Fruits : août-octobre. Jeunes pousses : avril-mai.' },
+      { label: 'Habitat', value: 'Lisières, haies, coupes forestières, chemins' },
+      { label: 'Comestible', value: 'Fruits mûrs crus ou cuits. Jeunes pousses pelées. Feuilles en infusion (tanins).' },
+      { label: 'Médicinal', value: 'Infusion de feuilles : astringent, aphtes, angines (tanins)' }
+    ],
+    confusions: [
+      { name: 'Fruits noirs à ne pas confondre', risk: 'Les baies noires de la belladone (Atropa belladonna) sont sur une plante herbacée sans épines, luisantes, portées individuellement. La ronce a des aiguillons et des fruits en agrégats. Pas de confusion réelle en pratique.' }
+    ],
+    certitude: 'Identification très facile. Les aiguillons recourbés et les fruits en agrégats sont infaillibles. Niveau requis : très faible.'
+  },
+
+  {
+    id: 'plante-lierre-terrestre',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Lierre terrestre',
+    nameLatin: 'Glechoma hederacea',
+    summary: 'Petite plante rampante à l\'odeur aromatique. Comestible en petite quantité, bonne plante médicinale de terrain pour les voies respiratoires.',
+    tags: ['Médicinal', 'Comestible (aromate)', 'Commun'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Glechoma_hederacea.jpg/640px-Glechoma_hederacea.jpg',
+      credit: 'AnRo0002, CC0, Wikimedia Commons'
+    },
+    description: 'Plante rampante à tiges quadrangulaires. Feuilles réniformes (en rein), crénelées, opposées. Fleurs mauves bilabiées (mars-juin). Odeur aromatique forte et caractéristique au froissement. Forme souvent de larges tapis en sous-bois.',
+    infoGrid: [
+      { label: 'Période', value: 'Toute l\'année (feuilles)' },
+      { label: 'Habitat', value: 'Sous-bois, haies, prairies humides, bords de chemin' },
+      { label: 'Médicinal', value: 'Infusion : expectorant, décongestionnant des voies respiratoires (usage traditionnel)' },
+      { label: 'Comestible', value: 'Feuilles fraîches comme aromate, en petite quantité (arôme fort)' }
+    ],
+    confusions: [
+      { name: 'Lamier pourpre (Lamium purpureum)', risk: 'Non toxique — feuilles également réniformes mais tiges rougeâtres et fleurs rose-pourpre différentes. Odeur moins marquée.' }
+    ],
+    certitude: 'Tiges quadrangulaires + odeur aromatique franche + feuilles réniformes = identification fiable. Niveau requis : faible.'
+  },
+
+  {
+    id: 'plante-noisetier',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Noisetier',
+    nameLatin: 'Corylus avellana',
+    summary: 'Arbuste des lisières dont les noisettes sont l\'une des meilleures sources de lipides et protéines en forêt tempérée.',
+    tags: ['Comestible (excellent)', 'Haute valeur énergétique', 'Très commun'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Corylus_avellana_catkins.jpg/640px-Corylus_avellana_catkins.jpg',
+      credit: 'Kenraiz, CC BY-SA 4.0, Wikimedia Commons'
+    },
+    description: 'Arbuste multi-tiges de 2-5 m. Feuilles rondes à ovales, doublement dentées, légèrement poilues. Chatons mâles jaunes pendants très visibles en janvier-mars. Noisettes enveloppées d\'une cupule verte découpée (août-octobre). Écorce lisse gris-brun.',
+    infoGrid: [
+      { label: 'Période', value: 'Noisettes : août-octobre' },
+      { label: 'Habitat', value: 'Lisières, haies, taillis, sous-bois clairs' },
+      { label: 'Comestible', value: 'Noisettes crues ou cuites. Excellente densité énergétique (630 kcal/100g).' },
+      { label: 'Usage bois', value: 'Bois flexible : tuteurs, cerclage, archets à friction, manches d\'outil' }
+    ],
+    confusions: [
+      { name: 'Aucune confusion dangereuse', risk: 'Les noisettes dans leur cupule caractéristique sont inconfondables.' }
+    ],
+    certitude: 'Identification facile. Les noisettes dans leur cupule verte frangée sont distinctives. Niveau requis : très faible.'
+  },
+
+  {
+    id: 'plante-chataignier',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Châtaignier',
+    nameLatin: 'Castanea sativa',
+    summary: 'Grand arbre dont les châtaignes sont l\'une des meilleures sources de glucides en forêt. Attention à la confusion avec le marron d\'Inde.',
+    tags: ['Comestible (excellent)', 'Haute valeur énergétique', 'Régions acides'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Castanea_sativa_Mill.jpg/640px-Castanea_sativa_Mill.jpg',
+      credit: 'Rasbak, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Grand arbre à écorce grise fissurée en réseau. Feuilles grandes, allongées, à dents très proéminentes mucronées (terminées en pointe). Bogues à épines fines et nombreuses, vertes puis brunes, contenant 2-3 châtaignes aplaties. Présent sur sols acides, atlantiques.',
+    infoGrid: [
+      { label: 'Période', value: 'Châtaignes : septembre-novembre' },
+      { label: 'Habitat', value: 'Forêts sur sols acides (Ardèche, Corse, Massif Central, Bretagne)' },
+      { label: 'Comestible', value: 'Châtaignes crues (astringentes), cuites (grillées, bouillies, farine). Source majeure de glucides.' },
+      { label: 'Valeur', value: '~200 kcal/100g cuit, riche en amidon' }
+    ],
+    confusions: [
+      { name: 'Marron d\'Inde (Aesculus hippocastanum)', risk: 'TOXIQUE — bogues à épines courtes et épaisses (peu nombreuses), amande brillante avec grande tache claire (hile) couvrant plus de la moitié. Feuilles palmées (5-7 folioles), non allongées. La châtaigne a un hile petit et mat. Arbre d\'ornement, ville et parcs.' }
+    ],
+    certitude: 'Critère clé : la bogue du châtaignier a des épines fines et très nombreuses. La châtaigne a un hile (cicatrice) petit et mat. Niveau requis : moyen (la confusion avec le marron est fréquente).'
+  },
+
+  {
+    id: 'plante-epilobe',
+    categoryId: 'plantes',
+    type: 'naturel',
+    title: 'Épilobe en épi',
+    nameLatin: 'Chamerion angustifolium',
+    summary: 'Grande plante des coupes forestières aux fleurs roses vives. Comestible complet : jeunes pousses, feuilles et fleurs.',
+    tags: ['Comestible', 'Pionnier des coupes', 'Facile à identifier'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Chamerion_angustifolium0.jpg/640px-Chamerion_angustifolium0.jpg',
+      credit: 'Dysmorodrepanis, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Grande plante de 60-150 cm, feuilles étroites et allongées, nervure centrale blanche visible. Fleurs roses vives en long épi terminal (juin-août). Graines portant un duvet blanc cotonneux. Colonise massivement les coupes forestières, incendies et bords de route.',
+    infoGrid: [
+      { label: 'Période', value: 'Jeunes pousses : avril-mai. Fleurs : juin-août.' },
+      { label: 'Habitat', value: 'Coupes forestières, talus, berges, zones perturbées' },
+      { label: 'Comestible', value: 'Jeunes pousses cuites (comme asperges). Fleurs crues. Feuilles en infusion.' },
+      { label: 'Usage', value: 'Au Canada (First Nations) : tige creuse comme paille naturelle' }
+    ],
+    confusions: [
+      { name: 'Autres épilobes (Epilobium spp.)', risk: 'Non toxiques, plus petits, fleurs rose pâle. Aucun risque.' }
+    ],
+    certitude: 'Fleurs roses vives en épi + feuilles étroites à nervure blanche + habitat de coupe = identification facile. Niveau requis : faible.'
+  },
+
+  // ═══════════════════════════════════════════════
+  //  CHAMPIGNONS (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'champ-trompette',
+    categoryId: 'champignons',
+    type: 'naturel',
+    title: 'Trompette de la mort',
+    nameLatin: 'Craterellus cornucopioides',
+    summary: 'Champignon noir en entonnoir, malgré son nom excellent comestible à l\'arôme intense. L\'un des plus sûrs à identifier.',
+    tags: ['Comestible (excellent)', 'Arôme intense', 'Peu de confusions'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Craterellus_cornucopioides_-_Trompette_de_la_mort_-_01.jpg/640px-Craterellus_cornucopioides_-_Trompette_de_la_mort_-_01.jpg',
+      credit: 'GILLES SAN MARTIN, CC BY-SA 2.0, Wikimedia Commons'
+    },
+    description: 'Champignon en entonnoir creux, de 3-12 cm. Couleur gris foncé à noir. Surface externe lisse à ondulée, gris-bleuté. Marge enroulée, bord irrégulier ondulé. Aucune lamelle ni pli visible sur la face externe (lisse ou à veines émoussées). Chair mince, élastique, odeur agréable et puissante.',
+    infoGrid: [
+      { label: 'Période', value: 'Août à novembre (après pluie)' },
+      { label: 'Habitat', value: 'Hêtraies, chênaies, sol calcaire, en groupes' },
+      { label: 'Comestible', value: 'Excellent séché ou frais. Arôme concentré et complexe. Séchage facile.' },
+      { label: 'Conservation', value: 'Se sèche en quelques heures, intensifie l\'arôme' }
+    ],
+    confusions: [
+      { name: 'Pratiquement aucune confusion dangereuse', risk: 'La couleur noire et la forme en entonnoir creux sont très caractéristiques. Certaines espèces de Craterellus proches sont toutes comestibles.' }
+    ],
+    certitude: 'La forme en entonnoir creux noir, sans lamelles ni tubes, est quasi infaillible. L\'un des champignons les plus sûrs pour un débutant confirmé. Niveau requis : faible.'
+  },
+
+  {
+    id: 'champ-coulemelle',
+    categoryId: 'champignons',
+    type: 'naturel',
+    title: 'Coulemelle (Lépiote élevée)',
+    nameLatin: 'Macrolepiota procera',
+    summary: 'Grand champignon en parasol aux lamelles blanches. Excellent comestible, mais confusions avec lépiotes toxiques à connaître impérativement.',
+    tags: ['Comestible (excellent)', 'Grandes lamelles blanches', 'Confusions toxiques possibles'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Macrolepiota_procera.jpg/640px-Macrolepiota_procera.jpg',
+      credit: 'Lebrac, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Grand champignon de 15-40 cm de hauteur. Chapeau en parasol, brun écailleux sur fond crème. Pied élancé, orné de bandes brunes en "couleuvre", avec un grand anneau mobile double. Lamelles blanches, libres (ne touchent pas le pied). Chair blanche, immuable. Odeur agréable de noisette.',
+    infoGrid: [
+      { label: 'Période', value: 'Juillet à novembre' },
+      { label: 'Habitat', value: 'Lisières, clairières, prairies, chemins forestiers' },
+      { label: 'Comestible', value: 'Chapeau excellent (poêlé comme une escalope). Pied trop dur — utilisé en bouillon.' },
+      { label: 'Critère clé', value: 'Anneau double mobile + pied en couleuvre + lamelles libres blanches' }
+    ],
+    confusions: [
+      { name: 'Lépiote brun-incarnat (Lepiota brunneoincarnata)', risk: 'MORTELLE — beaucoup plus petite (3-6 cm), pas d\'anneau mobile, chapeau brun rougeâtre concentrique. Contient des amatoxines. Règle : toute lépiote de moins de 10 cm = ne pas ramasser.' },
+      { name: 'Amanite phalloïde jeune (Amanita phalloides)', risk: 'MORTELLE — au stade "œuf" fermé, ressemble à un bouton blanc. La coulemelle n\'a pas de volve (poche à la base). Toujours vérifier la base du pied.' }
+    ],
+    certitude: 'Critères combinés obligatoires : taille >15 cm, pied en couleuvre, anneau double mobile, lamelles blanches libres, absence de volve. Règle absolue : toute lépiote de petite taille est à proscrire. Niveau requis : moyen à élevé.'
+  },
+
+  {
+    id: 'champ-amanite-phalloide',
+    categoryId: 'champignons',
+    type: 'naturel',
+    title: 'Amanite phalloïde — FICHE DANGER',
+    nameLatin: 'Amanita phalloides',
+    summary: 'Responsable de 90% des intoxications mortelles par champignons en France. Connaître ses critères est vital pour éviter toute confusion.',
+    tags: ['MORTEL', 'Amatoxines', 'Jamais consommer'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Amanita_phalloides_1.JPG/640px-Amanita_phalloides_1.JPG',
+      credit: 'Archenzo, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Chapeau 5-15 cm, verdâtre à olive (peut être blanc ou jaunâtre). Lamelles blanches libres. Pied blanc avec anneau strié pendant et VOLVE (poche membraneuse blanche à la base, souvent enterrée). Chair blanche, odeur douce au jeune âge. Habitat : sous chênes et hêtres. Mortelle dès 30g ingérés.',
+    infoGrid: [
+      { label: 'Toxicité', value: 'Mortelle — amatoxines détruisant le foie et les reins (syndrome phalloïdien)' },
+      { label: 'Latence', value: '6-24h après ingestion avant les premiers symptômes' },
+      { label: 'Critère distinctif', value: 'VOLVE : poche blanche à la base du pied (toujours dégager la base)' },
+      { label: 'Habitat', value: 'Sous chênes et hêtres, sols calcaires, été-automne' }
+    ],
+    confusions: [
+      { name: 'Rosé des prés / Agaric (Agaricus campestris)', risk: 'Confusion mortelle fréquente — l\'agaric a des lamelles ROSES puis brunes, pas de volve. Toujours vérifier la couleur des lamelles et dégager la base.' },
+      { name: 'Champignon de Paris (Agaricus bisporus)', risk: 'Confusion mortelle rapportée — lamelles roses/brunes chez l\'agaric, pas de volve. L\'amanite phalloïde a des lamelles blanches et une volve.' },
+      { name: 'Jeune pied bleu (Lepista nuda)', risk: 'Confusion possible — le pied bleu a des lamelles violacées et aucune volve.' }
+    ],
+    certitude: 'NE PAS CONSOMMER. Cette fiche est une référence de danger. Règles absolues : 1) Toujours dégager la base du pied — une volve = ne pas consommer. 2) Lamelles blanches + volve = danger mortel. 3) En cas d\'ingestion suspectée, appeler le 15 (SAMU) et le Centre Antipoison.'
+  },
+
+  {
+    id: 'champ-lactaire-delicieux',
+    categoryId: 'champignons',
+    type: 'naturel',
+    title: 'Lactaire délicieux',
+    nameLatin: 'Lactarius deliciosus',
+    summary: 'Champignon orangé à lait orange caractéristique. Critère du lait carotte le rend quasi infaillible à identifier.',
+    tags: ['Comestible (bon)', 'Lait orange distinctif', 'Sous conifères'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Lactarius_deliciosus_Zweden_2008.jpg/640px-Lactarius_deliciosus_Zweden_2008.jpg',
+      credit: 'Lebrac, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Chapeau orange brique à zones concentriques plus foncées, 5-14 cm, souvent déprimé au centre. Lamelles orange, cassantes (Lactaire = lait). À la coupure : exsude un lait orange "carotte" abondant, qui vire au vert après contact avec l\'air. Chair orange, verdissant à la coupe. Sous pins et épicéas exclusivement.',
+    infoGrid: [
+      { label: 'Période', value: 'Août à novembre' },
+      { label: 'Habitat', value: 'Pinèdes et pessières, exclusivement sous conifères' },
+      { label: 'Comestible', value: 'Bon poêlé ou grillé. La couleur verte est normale à la cuisson.' },
+      { label: 'Critère clé', value: 'Lait orange qui verdit à l\'air — unique en forêt' }
+    ],
+    confusions: [
+      { name: 'Lactaire sanguin (Lactarius sanguifluus)', risk: 'Comestible également, lait rouge-vineux. Aucun risque.' },
+      { name: 'Lactaire à toison (Lactarius torminosus)', risk: 'TOXIQUE — chapeau rosé avec marge très velue/frangée, sous bouleaux, lait blanc immuable (non orange). Distinct par la marge et le lait blanc.' }
+    ],
+    certitude: 'Le lait orange qui vire au vert + habitat sous conifères = identification quasi infaillible. Niveau requis : faible à moyen.'
+  },
+
+  {
+    id: 'champ-vesse-loup',
+    categoryId: 'champignons',
+    type: 'naturel',
+    title: 'Vesse-de-loup',
+    nameLatin: 'Calvatia gigantea / Lycoperdon perlatum',
+    summary: 'Champignons en boule blanche sans chapeau ni lamelles. Comestibles uniquement si la chair intérieure est entièrement blanche et uniforme.',
+    tags: ['Comestible (chair blanche uniquement)', 'Forme sphérique', 'Vérification intérieure obligatoire'],
+    photo: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Lycoperdon_perlatum.jpg/640px-Lycoperdon_perlatum.jpg',
+      credit: 'Ron Pastorino, CC BY-SA 3.0, Wikimedia Commons'
+    },
+    description: 'Fructifications sphériques à ovoïdes, blanches à crème, sans chapeau différencié ni lamelles. Calvatia gigantea : énorme (10-50 cm), surface lisse. Lycoperdon perlatum : plus petite (3-6 cm), surface verruqueuse. Chair intérieure blanche et uniforme quand jeune, devenant jaune puis verte-brun à maturité (spores).',
+    infoGrid: [
+      { label: 'Période', value: 'Juillet à novembre' },
+      { label: 'Habitat', value: 'Prairies, lisières, sous-bois, fumier' },
+      { label: 'Comestible', value: 'Uniquement si la coupe révèle une chair ENTIÈREMENT blanche et homogène (aucune ébauche de chapeau visible)' },
+      { label: 'Règle', value: 'Toujours couper en deux avant de consommer — vérifier l\'intérieur blanc uniforme' }
+    ],
+    confusions: [
+      { name: 'Amanite phalloïde au stade "œuf" (Amanita phalloides)', risk: 'MORTELLE — au stade bouton, l\'amanite phalloïde est ovale et blanc. La coupe révèle la silhouette du champignon (chapeau, pied, lamelles embryonnaires) à l\'intérieur. La vesse-de-loup a une chair HOMOGÈNE sans aucune structure.' }
+    ],
+    certitude: 'Règle absolue : couper en deux et vérifier chair blanche uniforme sans aucune structure interne. Une seule zone colorée = ne pas consommer. Niveau requis : moyen.'
+  },
+
+  // ═══════════════════════════════════════════════
+  //  PISTES & TRACES (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'piste-chevreuil',
+    categoryId: 'pistes',
+    type: 'naturel',
+    title: 'Empreinte de chevreuil',
+    nameLatin: 'Capreolus capreolus',
+    summary: 'Petit ongulé le plus commun de France. Empreinte petite et pointue, marquages territoriaux discrets mais réguliers.',
+    tags: ['Ongulé', 'Crépusculaire', 'Forêts, bocage'],
+    description: 'Deux onglons étroits et pointus de 3-4 cm, souvent joints en pointe. Ergots rarement visibles (sol meuble uniquement). Piste en trot caractéristique : les pieds arrière se posent exactement sur les traces des pieds avant (superposition). Frayures à 40-80 cm de hauteur. Crottes cylindriques noires de 1-1,5 cm.',
+    infoGrid: [
+      { label: 'Empreinte', value: '3 à 4 cm, pointue, étroite' },
+      { label: 'Piste', value: 'Superposition des pieds (trot direct)' },
+      { label: 'Frayures', value: 'Écorce lacérée à 40-80 cm de hauteur' },
+      { label: 'Crottes', value: 'Cylindriques noires, 1-1,5 cm' }
+    ],
+    confusions: [
+      { name: 'Cerf (Cervus elaphus)', risk: 'Empreinte beaucoup plus grande (6-8 cm), frayures plus hautes (80-150 cm), crottes plus grosses.' },
+      { name: 'Mouton/chèvre domestique', risk: 'Empreinte similaire en forme mais habitat différent. Onglons souvent plus évasés chez les domestiques.' }
+    ],
+    certitude: 'Identification par taille de l\'empreinte + hauteur des frayures + habitat. Niveau requis : faible.'
+  },
+
+  {
+    id: 'piste-blaireau',
+    categoryId: 'pistes',
+    type: 'naturel',
+    title: 'Indices de présence du blaireau',
+    nameLatin: 'Meles meles',
+    summary: 'Mustélidé commun aux terriers caractéristiques. Présence facile à détecter par ses latrines, coulées et excavations.',
+    tags: ['Mustélidé', 'Nocturne', 'Lisières, bocage'],
+    description: 'Empreinte large de 5-6 cm, 5 doigts avec de longues griffes, coussinets séparés nettement. Terriers : entrées ovales larges (25-40 cm) avec tas de terre et litière végétale à l\'extérieur. Latrines : petits trous creusés à proximité du terrier. Coulées : passages réguliers dans la végétation, traces de poils blancs sur les ronces.',
+    infoGrid: [
+      { label: 'Empreinte', value: '5-6 cm, 5 griffes longues' },
+      { label: 'Terrier', value: 'Entrée ovale 25-40 cm, déblais importants' },
+      { label: 'Latrines', value: 'Petits trous creusés, déjections molles' },
+      { label: 'Activité', value: 'Strictement nocturne, crépusculaire en été' }
+    ],
+    confusions: [
+      { name: 'Terrier de renard', risk: 'Entrée plus ronde et plus petite (15-20 cm), odeur musquée forte, os et restes de proies à l\'entrée (le renard enterre peu).' }
+    ],
+    certitude: 'Le terrier à grande entrée ovale avec déblais et latrines proches est très caractéristique. Niveau requis : faible.'
+  },
+
+  {
+    id: 'piste-rapace',
+    categoryId: 'pistes',
+    type: 'naturel',
+    title: 'Pelotes de rejection et indices de rapaces',
+    summary: 'Les pelotes de rejection sont des indicateurs fiables de présence et d\'activité des rapaces. Analyse simple sur le terrain.',
+    tags: ['Rapace', 'Indices indirects', 'Toutes saisons'],
+    description: 'Les rapaces régurgitent les parties non digestibles de leurs proies sous forme de pelotes compactes : os, poils, plumes, chitine d\'insectes. Forme ovale, 3-8 cm. À chercher sous les arbres perchoirs (vieux arbres isolés, lisières). Empreintes de rapace : 3 doigts vers l\'avant + 1 vers l\'arrière, griffes courbes profondes.',
+    infoGrid: [
+      { label: 'Pelotes', value: 'Ovales, 3-8 cm, contenu variable selon espèce' },
+      { label: 'Contenu', value: 'Poils + os (chouettes). Poils + os compressés (buses). Plumes (faucons).' },
+      { label: 'Localisation', value: 'Sous arbres perchoirs, clochers, granges' },
+      { label: 'Espèces communes', value: 'Chouette hulotte, buse variable, effraie des clochers' }
+    ],
+    confusions: [
+      { name: 'Pelotes de corvidés (corbeaux, choucas)', risk: 'Plus petites et moins compactes, contenu végétal + insectes, moins d\'os. Localisation similaire.' }
+    ],
+    certitude: 'Les pelotes de rapace sont distinctives par leur forme compacte et leur contenu osseux. Niveau requis : faible à moyen.'
+  },
+
+  {
+    id: 'piste-loutre',
+    categoryId: 'pistes',
+    type: 'naturel',
+    title: 'Indices de présence de la loutre',
+    nameLatin: 'Lutra lutra',
+    summary: 'Mustélidé aquatique dont les traces le long des berges sont caractéristiques. Espèce protégée indicatrice de bonne qualité d\'eau.',
+    tags: ['Mustélidé aquatique', 'Nocturne', 'Berges de cours d\'eau'],
+    description: 'Empreinte de 6-9 cm, 5 doigts avec palmure visible sur terrain mou. Épreintes (excréments) déposés en évidence sur rochers, souches, confluents — odeur forte et caractéristique (musquée-poisson). Glissades dans les berges argileuses. Traces de poissons consommés au bord de l\'eau.',
+    infoGrid: [
+      { label: 'Empreinte', value: '6-9 cm, 5 doigts, palmure visible' },
+      { label: 'Épreintes', value: 'Dépôt marqueur odorant sur rochers émergés' },
+      { label: 'Habitat', value: 'Rivières et plans d\'eau propres, forêts alluviales' },
+      { label: 'Statut', value: 'Espèce protégée — indicateur de bonne qualité eau' }
+    ],
+    confusions: [
+      { name: 'Vison d\'Amérique (Neovison vison)', risk: 'Empreinte similaire mais plus petite (3-5 cm), épreinte différente. Espèce invasive.' }
+    ],
+    certitude: 'L\'épreinte odorant sur support visible + habitat aquatique + glissades = identification assurée. Niveau requis : faible.'
+  },
+
+  // ═══════════════════════════════════════════════
+  //  EAU (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'eau-trouver-source',
+    categoryId: 'eau',
+    type: 'technique',
+    title: 'Trouver de l\'eau en forêt',
+    summary: 'Lire le terrain, la végétation et la topographie pour localiser de l\'eau avant d\'être en situation de manque.',
+    conditions: ['Tout terrain boisé', 'Pas de source visible'],
+    needs: ['Observation', 'Carte topo si disponible'],
+    steps: [
+      'Suivre les bas-fonds et les thalwegs (lignes de fond de vallée) : l\'eau ruisselle vers les points bas.',
+      'Observer la végétation : saules, aulnes, peupliers, joncs, menthe sauvage indiquent une nappe proche.',
+      'Écouter : le murmure d\'un cours d\'eau porte à plusieurs centaines de mètres en forêt silencieuse.',
+      'Chercher les roches affleurantes : les sources surgissent souvent à la jonction roches perméables / imperméables.',
+      'En montagne : suivre les coulées d\'herbe verte en été, qui signalent un suintement permanent.',
+      'En plaine : creuser dans le lit d\'un cours d\'eau apparemment sec à 30-50 cm peut trouver de l\'eau.',
+    ],
+    attention: [
+      'L\'eau stagnante (mare) est plus risquée que l\'eau courante, même filtrée.',
+      'Une végétation anormalement luxuriante en zone sèche = nappe potentielle.',
+      'Ne jamais attendre d\'avoir soif pour chercher de l\'eau — la déshydratation altère le jugement.',
+    ]
+  },
+
+  {
+    id: 'eau-signes-contamination',
+    categoryId: 'eau',
+    type: 'technique',
+    title: 'Évaluer la qualité d\'une source',
+    summary: 'Quelques indicateurs visuels et olfactifs permettent d\'estimer le risque avant traitement. Aucun ne garantit la potabilité sans traitement.',
+    conditions: ['Source naturelle inconnue'],
+    needs: ['Observation attentive'],
+    steps: [
+      'Observer la couleur : eau claire ≠ eau propre, mais eau colorée (brune, verte, orangée) = risque accru.',
+      'Observer l\'écume : bulles persistantes qui ne se dissipent pas = matière organique ou détergent.',
+      'Sentir : odeur de soufre (source chaude naturelle), d\'égout, de produits chimiques — éviter ou traiter avec soin.',
+      'Regarder autour : activité agricole intensive en amont, décharges, zones industrielles = contamination chimique probable.',
+      'Observer la vie aquatique : présence de larves d\'insectes, petits poissons = signe positif de qualité relative.',
+      'Sources naturelles émergentes (résurgences) et eaux de montagne au-dessus des zones habitées = moins risquées.',
+    ],
+    attention: [
+      'Aucune observation visuelle ne détecte les pathogènes (virus, bactéries, Giardia) — tout traitement reste nécessaire.',
+      'Les zones agricoles peuvent avoir des eaux claires mais très chargées en nitrates et pesticides — non éliminés par ébullition.',
+      'Une eau froide et vive est généralement moins chargée qu\'une eau chaude et stagnante.',
+    ]
+  },
+
+  {
+    id: 'eau-purification-chimique',
+    categoryId: 'eau',
+    type: 'technique',
+    title: 'Purification chimique (Micropur, DCCNa)',
+    summary: 'Pastilles ou gouttes désinfectantes — méthode légère et rapide, efficace contre bactéries et virus, moins contre Cryptosporidium.',
+    conditions: ['Eau filtrée disponible', 'Pas de feu possible', 'Kit chimique en poche'],
+    needs: ['Micropur Forte (DCCNa) ou équivalent', 'Eau filtrée ou décantée', 'Récipient propre'],
+    steps: [
+      'Filtrer d\'abord l\'eau si elle est trouble (la turbidité protège les pathogènes des désinfectants).',
+      'Respecter la dose indiquée : en général 1 comprimé pour 1 litre d\'eau claire.',
+      'Mélanger et attendre le temps de contact : 30 minutes pour eau claire à 20°C, 2h pour eau froide ou trouble.',
+      'Pour masquer le goût du chlore après traitement : ajouter une pincée de vitamine C (acide ascorbique) ou attendre l\'évaporation partielle.',
+    ],
+    attention: [
+      'Le Micropur Forte ne détruit pas Cryptosporidium (parasite résistant au chlore) — risque en zones à ruminants.',
+      'L\'efficacité diminue fortement avec l\'eau froide (<10°C) — doubler le temps de contact.',
+      'Ne jamais utiliser seul sans filtration préalable si l\'eau est trouble.',
+      'L\'eau de Javel ménagère (dosage : 2 gouttes par litre, eau claire, 30 min) est une alternative d\'urgence.',
+    ]
+  },
+
+  // ═══════════════════════════════════════════════
+  //  ABRI (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'abri-tarp',
+    categoryId: 'abri',
+    type: 'technique',
+    title: 'Abri tarp / bâche : configurations de base',
+    summary: 'Une bâche de 3×3m et quelques cordes permettent de monter un abri efficace en quelques minutes. Trois configurations fondamentales.',
+    conditions: ['Bâche / tarp disponible', 'Arbres ou supports à portée', 'Vent directionnel connu'],
+    needs: ['Bâche imperméable 3×3m minimum', 'Cordelette 10m', 'Sardines ou piquets', 'Noeuds cabestan et chaise maîtrisés'],
+    steps: [
+      'Configuration A-frame (tente faîtière) : tendre une corde entre deux arbres, suspendre la bâche par le milieu, planter les bords latéraux au sol. Protection omnidirectionnelle, bonne pour pluie forte.',
+      'Configuration lean-to (appenti) : tendre un côté haut entre deux arbres, planter le côté bas au sol incliné. Ouverture vers le feu. Bonne protection du vent dominant.',
+      'Configuration diamond (losange) : orienter la bâche en losange, fixer le coin haut à un arbre, tendre les deux coins latéraux, planter le coin bas. Rapide à monter, protection frontale.',
+      'Toujours orienter l\'ouverture opposée au vent et à la pluie dominants.',
+      'Tendre les cordelettes avec un nœud cabestan réglable sur les arbres pour ajuster la tension.',
+    ],
+    attention: [
+      'Une bâche tendue lâche bat dans le vent et claque toute la nuit — tendre fermement.',
+      'Creuser un sillon en amont de l\'abri pour dévier l\'eau de ruissellement.',
+      'Vérifier les points d\'ancrage : les œillets de bâche cheap cèdent sous tension — passer la corde autour d\'un galet emprisonné dans la bâche (tête de mort).',
+    ]
+  },
+
+  {
+    id: 'abri-choix-emplacement',
+    categoryId: 'abri',
+    type: 'technique',
+    title: 'Choisir un bon emplacement de bivouac',
+    summary: 'L\'emplacement est aussi important que la construction. Un mauvais site peut rendre inutile le meilleur des abris.',
+    conditions: ['Tout terrain', 'Avant installation'],
+    needs: ['Observation 10 min du site'],
+    steps: [
+      'Chercher un sol plat ou légèrement incliné vers les pieds (jamais la tête en bas).',
+      'Vérifier au-dessus : arbres morts debout (chandelles), branches mortes, nids de guêpes, ruche.',
+      'Vérifier le drainage : éviter les creux, bas-fonds, zones herbeuses denses (condensation maximale).',
+      'Distance à l\'eau : proche mais pas dans la zone inondable (10m minimum d\'un cours d\'eau).',
+      'Vérifier le vent dominant : un abri naturel (talus, gros rocher, lisière dense) au nord est un avantage.',
+      'Marquer mentalement les chemins de sortie en cas d\'orage ou de situation d\'urgence nocturne.',
+    ],
+    attention: [
+      'Les arbres morts debout (chandelles) sont le risque le plus souvent négligé — vérifier par vent.',
+      'Une zone dégagée en bordure de forêt reçoit plus de rosée et est plus froide qu\'un sous-bois abrité.',
+      'En montagne : éviter les couloirs naturels (coulée, torrent), les creux (air froid stagnant) et les crêtes exposées.',
+    ]
+  },
+
+  // ═══════════════════════════════════════════════
+  //  FABRICATION (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'fab-goudron-bouleau',
+    categoryId: 'fabrication',
+    type: 'technique',
+    title: 'Goudron de bouleau (distillation sèche)',
+    summary: 'Adhésif naturel brun-noir au pouvoir collant exceptionnel. Utilisé depuis le Paléolithique pour fixer des lames sur des manches.',
+    conditions: ['Écorce de bouleau disponible', 'Feu possible', 'Récipient métal'],
+    needs: ['Écorce de bouleau externe (couche extérieure)', 'Boîte métallique hermétique avec petit trou', 'Feu'],
+    steps: [
+      'Collecter l\'écorce externe de bouleau (couche blanche, non le bois) en grandes lanières.',
+      'Découper et tasser l\'écorce dans une boîte métallique hermétique percée d\'un petit trou en bas.',
+      'Poser la boîte à l\'envers sur un support au-dessus d\'une flamme, avec un récipient propre dessous pour collecter.',
+      'Chauffer progressivement — un liquide brun-noir s\'écoule par le trou : c\'est le goudron brut.',
+      'Continuer jusqu\'à ce que l\'écoulement cesse (15-30 min selon la quantité).',
+      'Laisser refroidir — le goudron durcit et se ramollit à la chaleur du doigt. Application directe sur l\'objet à coller.',
+    ],
+    attention: [
+      'Vapeurs : travailler en extérieur ou très bonne ventilation.',
+      'Le goudron chaud brûle comme du sucre caramélisé — ne pas toucher avant refroidissement complet.',
+      'Qualité du goudron = température de chauffe. Trop chaud = produit trop liquide et fragile. Idéal : couleur brun-noir mat.',
+    ]
+  },
+
+  {
+    id: 'fab-arc-primitif',
+    categoryId: 'fabrication',
+    type: 'technique',
+    title: 'Arc primitif (arc long simple)',
+    summary: 'Fabrication d\'un arc fonctionnel à partir d\'une branche. Projet de 1-2 jours. Résultat suffisant pour la petite chasse ou la pratique.',
+    conditions: ['Bois disponible (if, orme, noisetier, frêne)', 'Couteau', 'Temps : 1-2 jours de travail'],
+    needs: ['Branche droite de 150-170 cm, diamètre 4-5 cm', 'Couteau robuste', 'Cordage végétal ou tendon', 'Papier de verre ou silex pour polir'],
+    steps: [
+      'Sélectionner une branche droite, sans nœuds sur les 2/3 centraux. Bois vert ou légèrement sec (6-12 mois).',
+      'Identifier le dos (côté écorce, côté tendu) et le ventre (côté cœur, côté comprimé). Ne jamais entailler le dos.',
+      'Sculpter les lames (bras) de façon symétrique en retirant du bois uniquement côté ventre. Tester la flexion régulière.',
+      'Ménager une poignée centrale non sculptée de 15 cm.',
+      'Tailler des encoches (nocks) aux deux extrémités pour accrocher la corde.',
+      'Fixer la corde (cordage torsadé végétal, tendon) avec une flexion au repos de 15-20 cm (fistmele).',
+      'Tirer progressivement pour habituer le bois. Ajuster en retirant du bois aux zones trop rigides.',
+    ],
+    attention: [
+      'L\'if (Taxus baccata) est le meilleur bois mais toutes ses parties sauf la chair du fruit sont toxiques.',
+      'Ne jamais entailler le dos de l\'arc (côté écorce) — risque de rupture sous tension.',
+      'Sécher l\'arc lentement à l\'abri : un bois non sec complètement perd sa tension en quelques jours.',
+    ]
+  },
+
+  {
+    id: 'fab-collet',
+    categoryId: 'fabrication',
+    type: 'technique',
+    title: 'Collet pour lagomorphes',
+    summary: 'Piège passif simple. Usage soumis à réglementation stricte en France — légal uniquement sur son propre terrain ou avec autorisation du propriétaire/locataire de chasse.',
+    conditions: ['Coulées actives identifiées', 'Sol avec empreintes fraîches', 'Autorisation légale'],
+    needs: ['Fil de cuivre 1mm ou ficelle fine', 'Petit piquet', 'Pince ou couteau'],
+    steps: [
+      'Identifier une coulée active : végétation aplatie, poils, crottes fraîches.',
+      'Former une boucle de 10-12 cm de diamètre pour lapin (7-8 cm pour lièvre), nœud coulissant libre.',
+      'Positionner la boucle à 8-10 cm de hauteur (poing fermé = bonne référence pour lapin).',
+      'Fixer le piquet à 30 cm en aval sur la coulée pour orienter l\'animal vers la boucle.',
+      'Ancrer solidement — un lapin peut traîner un piquet mal fixé.',
+      'Vérifier toutes les 12h maximum — obligation légale et morale.',
+    ],
+    attention: [
+      '⚠ En France : le collet est interdit sur le domaine public sans permis de chasse et droit de chasse sur le terrain. Se renseigner auprès de la fédération de chasse locale.',
+      'Démanteler tous les collets non utilisés — un collet abandonné tue sans sélection (gibier protégé, chien).',
+      'Toujours vérifier régulièrement — ne jamais poser et oublier.',
+    ]
+  },
+
+  {
+    id: 'fab-aiguille-os',
+    categoryId: 'fabrication',
+    type: 'technique',
+    title: 'Aiguille en os et alène',
+    summary: 'Fabriquer des outils de couture et de perçage à partir d\'os d\'animaux. Outils essentiels pour la confection et la réparation.',
+    conditions: ['Os d\'animal disponible (oiseau, lapin)', 'Silex ou pierre abrasive'],
+    needs: ['Os plat ou fin (omoplate, os long fendu)', 'Silex ou grès abrasif', 'Couteau', 'Pierre à affûter fine'],
+    steps: [
+      'Choisir un os compact (omoplate, métatarse) pas trop épais.',
+      'Fendre l\'os dans le sens de la longueur en frappant avec un silex.',
+      'Sélectionner un éclat plat et allongé de 3-6 cm.',
+      'Abraser sur une pierre grès en frottant pour amincir et pointer une extrémité.',
+      'Percer le chas (trou) à l\'autre extrémité au silex ou au foret à archet sur bois.',
+      'Polir et affiner jusqu\'à obtenir une pointe suffisamment fine pour passer dans un cuir fin.',
+    ],
+    attention: [
+      'L\'os fraîchement cuit (bouilli) se travaille plus facilement que l\'os sec.',
+      'Le chas se fissure facilement — percer délicatement en rotation, pas en pression directe.',
+      'Une alène (sans chas) est plus simple et suffit pour la couture au point de sellier.',
+    ]
+  },
+
+  // ═══════════════════════════════════════════════
+  //  NAVIGATION (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'nav-boussole-improvisee',
+    categoryId: 'navigation',
+    type: 'technique',
+    title: 'Boussole improvisée (aiguille aimantée)',
+    summary: 'Fabriquer une boussole fonctionnelle avec une aiguille, un aimant ou de la soie et de l\'eau. Précision suffisante pour l\'orientation cardinale.',
+    conditions: ['Aiguille ou lame métallique fine', 'Eau calme ou feuille flottante', 'Aimant ou soie (facultatif)'],
+    needs: ['Aiguille à coudre ou épingle', 'Récipient d\'eau calme', 'Feuille ou liège pour flotteur', 'Aimant ou mèche de cheveux'],
+    steps: [
+      'Aimanter l\'aiguille : la frotter 50 fois dans le même sens sur un aimant (boucle de ceinture, haut-parleur d\'écouteur).',
+      'Sans aimant : frotter l\'aiguille vigoureusement dans les cheveux 50 fois, dans le même sens.',
+      'Couper un petit flotteur (rondelle de liège, carré de feuille épaisse).',
+      'Poser délicatement l\'aiguille à plat sur le flotteur dans un récipient d\'eau parfaitement calme.',
+      'L\'aiguille s\'oriente vers le Nord magnétique après quelques oscillations.',
+      'Vérifier avec deux points de repère solaires ou stellaires pour confirmer.',
+    ],
+    attention: [
+      'L\'aimantation par friction est temporaire — refaire toutes les heures en cas d\'utilisation prolongée.',
+      'Tenir le récipient loin de tout métal (couteau, boucle de ceinture) qui dévie l\'aiguille.',
+      'La déclinaison magnétique en France est d\'environ -1° à +3° selon la région — erreur négligeable en pratique.',
+    ]
+  },
+
+  {
+    id: 'nav-lune',
+    categoryId: 'navigation',
+    type: 'technique',
+    title: 'Orientation par la lune',
+    summary: 'La lune permet une orientation approximative la nuit quand les étoiles sont masquées. Méthodes selon la phase lunaire.',
+    conditions: ['Nuit', 'Lune visible', 'Hémisphère nord'],
+    needs: ['Observation de la lune'],
+    steps: [
+      'Lune en croissant : tracer une ligne imaginaire entre les deux cornes du croissant et la prolonger jusqu\'au sol — ce point est approximativement au Sud.',
+      'Pleine lune : à son lever (vers 18h), elle se lève à l\'Est. À son coucher (vers 6h), elle se couche à l\'Ouest.',
+      'Premier quartier (D dans le ciel) : la lune est au Sud vers 18h, se couche à l\'Ouest vers minuit.',
+      'Dernier quartier (C dans le ciel) : la lune est au Sud vers 6h du matin.',
+      'Méthode générale : noter la position de la lune, attendre 2h, noter sa nouvelle position — elle se déplace vers l\'Ouest.',
+    ],
+    attention: [
+      'La méthode du croissant donne une indication à ±20°, suffisant pour l\'orientation générale.',
+      'La lune se lève 50 minutes plus tard chaque jour — ajuster selon la date.',
+      'En hiver sous nos latitudes, la pleine lune monte très haut dans le ciel (compensation de la faible hauteur du soleil).',
+    ]
+  },
+
+  {
+    id: 'nav-lecture-terrain',
+    categoryId: 'navigation',
+    type: 'technique',
+    title: 'Lecture du terrain sans carte',
+    summary: 'Les caractéristiques du paysage — végétation, versants, cours d\'eau — permettent de se positionner et de progresser sans se perdre.',
+    conditions: ['Forêt ou montagne', 'Pas de carte / GPS'],
+    needs: ['Observation attentive', 'Logique topographique'],
+    steps: [
+      'Identifier un linéaire (cours d\'eau, ligne électrique, route) et s\'y diriger : tout vaut mieux qu\'errer en cercles.',
+      'Progresser en maintenant une direction constante : viser un repère lointain (sommet, antenne), en aligner deux quand le premier disparaît.',
+      'Utiliser la végétation : les versants sud sont plus chauds (végétation sèche, héliophile), les versants nord plus humides et ombragés.',
+      'En montagne : suivre un thalweg vers le bas mène inévitablement à un cours d\'eau puis à une vallée habitée.',
+      'Les fourmilières sont souvent sur le flanc sud des arbres (exposition au soleil matinal).',
+      'La mousse est présente sur toutes les faces, pas uniquement au nord — ce mythe est à proscrire.',
+    ],
+    attention: [
+      'La règle "la mousse pousse au nord" est un MYTHE en milieu tempéré humide — ne pas s\'y fier.',
+      'Progresser en descente en forêt dense : les chutes sont le principal risque. Ralentir par brouillard ou nuit.',
+      'En cas de doute sur la direction : s\'arrêter, observer 15 min, mieux vaut une pause qu\'un mauvais choix.',
+    ]
+  },
+
+  // ═══════════════════════════════════════════════
+  //  PREMIERS SECOURS (suite)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'secours-morsure-vipere',
+    categoryId: 'secours',
+    type: 'technique',
+    title: 'Morsure de vipère',
+    summary: 'La vipère aspic est le seul serpent venimeux de France métropolitaine. Morsure rarement mortelle chez l\'adulte sain, mais nécessite toujours une prise en charge médicale.',
+    conditions: ['Morsure de serpent en France', 'Deux marques de crochets'],
+    needs: ['Téléphone (appel 15 ou 112)', 'Marqueur pour noter heure et progression'],
+    steps: [
+      'Rester calme et immobiliser le membre mordu — l\'agitation accélère la diffusion du venin.',
+      'Marquer l\'heure de la morsure et le contour de l\'œdème avec un marqueur ou stylo (suivi de progression).',
+      'Appeler le 15 (SAMU) ou le Centre Antipoison (0 800 59 59 59) immédiatement.',
+      'Allonger la victime, membre mordu au niveau du cœur (ni surélevé ni pendant).',
+      'Retirer bagues, montre, vêtements serrés sur le membre mordu avant l\'œdème.',
+      'Évacuer vers un centre hospitalier — l\'antivenin n\'est disponible qu\'à l\'hôpital.',
+    ],
+    attention: [
+      '⚠ NE PAS aspirer le venin — inefficace et risque d\'intoxication buccale.',
+      '⚠ NE PAS inciser la plaie — aggrave les lésions sans bénéfice.',
+      '⚠ NE PAS poser de garrot — ischémie locale sans bénéfice prouvé.',
+      'La vipère aspic mord par surprise (piétinement) — regarder où on pose les pieds, mains, et fesses.',
+    ]
+  },
+
+  {
+    id: 'secours-tique',
+    categoryId: 'secours',
+    type: 'technique',
+    title: 'Tique et maladie de Lyme',
+    summary: 'La maladie de Lyme est la principale maladie à tique d\'Europe. Extraction précoce et surveillance des symptômes sont les gestes clés.',
+    conditions: ['Sortie en forêt, végétation dense', 'Tique fixée'],
+    needs: ['Tire-tique ou pince fine', 'Désinfectant', 'Marqueur ou appareil photo'],
+    steps: [
+      'Inspecter le corps après chaque sortie : aisselles, aines, derrière les genoux, cuir chevelu, nuque.',
+      'Extraction : utiliser un tire-tique ou une pince fine. Saisir la tique au plus près de la peau.',
+      'Tirer perpendiculairement à la peau, sans écraser ni tordre (éviter de comprimer l\'abdomen).',
+      'Désinfecter la zone après extraction. Photographier la tique et noter la date d\'extraction.',
+      'Surveiller l\'érythème migrant (rougeur circulaire > 5 cm qui s\'étend) pendant 3 à 30 jours.',
+      'En cas d\'érythème migrant, fièvre, fatigue intense : consulter un médecin en indiquant la morsure.',
+    ],
+    attention: [
+      '⚠ NE PAS utiliser d\'éther, alcool, vaseline ou flamme pour décrocher la tique — stimule la régurgitation du venin.',
+      'L\'érythème migrant est pathognomonique de la maladie de Lyme — traitement antibiotique précoce très efficace.',
+      'Une tique fixée depuis moins de 24h a un risque de transmission très faible — agir vite.',
+      'Les tiques sont actives dès 7°C — présentes toute l\'année sauf grand froid.',
+    ]
+  },
+
+  {
+    id: 'secours-brulure',
+    categoryId: 'secours',
+    type: 'technique',
+    title: 'Brûlures : évaluation et premiers soins',
+    summary: 'Refroidir abondamment et rapidement est la seule action efficace sur le terrain. Ne rien appliquer d\'autre.',
+    conditions: ['Brûlure thermique (feu, liquide chaud)', 'Brûlure chimique'],
+    needs: ['Eau froide abondante', 'Pansement propre non adhésif'],
+    steps: [
+      'Refroidir IMMÉDIATEMENT sous eau froide courante (15°C, pas glacée) pendant 15 minutes minimum.',
+      'Retirer les vêtements et bijoux autour de la brûlure, sauf s\'ils adhèrent à la peau.',
+      'Evaluer la profondeur : 1er degré (rouge, douloureux, sans cloque), 2e degré (cloque), 3e degré (peau blanchâtre ou noircie, indolore).',
+      'Evaluer la surface : règle des 9 (chaque membre = 9%, torse = 18%, tête = 9%). >10% chez l\'adulte = urgence.',
+      'Couvrir d\'un pansement propre, non adhésif, non serré. Ne rien appliquer.',
+      'Toute brûlure >5 cm, profonde, au visage/mains/articulations ou chez l\'enfant = évacuation médicale.',
+    ],
+    attention: [
+      '⚠ Ne jamais appliquer : beurre, dentifrice, huile, compresse adhérente, ou glace directement.',
+      '⚠ Ne pas percer les cloques — elles protègent contre l\'infection.',
+      'Une brûlure au 3e degré est indolore (nerfs détruits) — le patient sous-évalue la gravité.',
+    ]
+  },
+
+  {
+    id: 'secours-coup-chaleur',
+    categoryId: 'secours',
+    type: 'technique',
+    title: 'Coup de chaleur (hyperthermie)',
+    summary: 'Urgence vitale — la température corporelle monte à >40°C. Refroidissement immédiat et rapide est le seul traitement efficace.',
+    conditions: ['Forte chaleur', 'Effort prolongé', 'Déshydratation', 'Absence de vent'],
+    needs: ['Eau froide', 'Ombre', 'Téléphone'],
+    steps: [
+      'Reconnaître : peau sèche et brûlante (sudation absente), confusion ou perte de conscience, température >40°C.',
+      'Mettre immédiatement à l\'ombre, allonger, surélever les jambes (sauf si inconscient).',
+      'Refroidir le corps par tous les moyens disponibles : eau froide sur la peau, éventail, linge humide.',
+      'Privilégier le refroidissement des zones vasculaires : cou, aisselles, aines.',
+      'Appeler le 15 (SAMU) immédiatement — le coup de chaleur est une urgence médicale absolue.',
+      'Si conscient et capable d\'avaler : faire boire de l\'eau fraîche par petites gorgées.',
+    ],
+    attention: [
+      '⚠ Différence avec l\'insolation (coup de soleil simple) : dans le coup de chaleur, la thermorégulation est dépassée.',
+      '⚠ Peau sèche ET chaude = coup de chaleur grave. Peau moite = épuisement par chaleur, moins grave.',
+      'Les personnes âgées, les enfants, et ceux sous traitement diurétique ou psychotrope sont à très haut risque.',
+    ]
+  },
+
+  {
+    id: 'secours-noyade',
+    categoryId: 'secours',
+    type: 'technique',
+    title: 'Noyade et quasi-noyade',
+    summary: 'Protocole de sauvetage et de réanimation. Priorité : ne pas se mettre en danger soi-même lors du sauvetage.',
+    conditions: ['Personne en difficulté dans l\'eau'],
+    needs: ['Corde', 'Flotteur si disponible', 'Téléphone'],
+    steps: [
+      'Évaluer : ne jamais entrer dans l\'eau si on n\'est pas formé au sauvetage aquatique — on risque sa propre vie.',
+      'Sauvetage depuis la rive : lancer une corde, un bâton, un vêtement noué, tout objet flottant.',
+      'Extraire la victime : allonger immédiatement, tête en légère extension.',
+      'Évaluer conscience et respiration (10 secondes maximum).',
+      'Si apnée : 5 insufflations de secours (bouche-à-bouche), puis RCP 30 compressions / 2 insufflations.',
+      'Toute victime de quasi-noyade, même consciente, doit être évaluée médicalement (risque de noyade secondaire jusqu\'à 24h).',
+    ],
+    attention: [
+      '⚠ Noyade secondaire : une personne qui a inhalé de l\'eau et semble bien peut développer un œdème pulmonaire 1-24h après — toujours consulter.',
+      '⚠ Eau froide : une personne immergée en eau froide peut survivre longtemps à l\'arrêt cardiaque — continuer la RCP jusqu\'à l\'arrivée des secours.',
+      'Appeler le 15 ou le 18 dès que possible, même si la personne semble récupérée.',
+    ]
+  },
+
+  // ═══════════════════════════════════════════════
+  //  FEU (ajouts)
+  // ═══════════════════════════════════════════════
+
+  {
+    id: 'feu-lentille',
+    categoryId: 'feu',
+    subcategoryId: 'techniques',
+    type: 'technique',
+    title: 'Allumage par concentration solaire',
+    summary: 'Utiliser une lentille, un miroir ou de l\'eau emprisonnée pour concentrer les rayons du soleil et enflammer l\'amadou.',
+    conditions: ['Soleil direct fort', 'Pas de vent fort', 'Amadou très sec'],
+    needs: ['Lentille (loupe, fond de bouteille avec eau, lunettes convexes)', 'Amadou noir (charbon de champignon)'],
+    steps: [
+      'Loupe ou lentille : concentrer le point lumineux le plus petit possible sur de l\'amadou noir (charbon de bolet amadouvier).',
+      'Tenir le point focalisé au même endroit jusqu\'à rougeoiement, puis souffler doucement.',
+      'Bouteille plastique remplie d\'eau claire : peut servir de lentille convexe improvisée.',
+      'Miroir ou smartphone éteint : pour réfléchir et concentrer (méthode moins efficace, plus longue).',
+      'Papier aluminium en cuvette parabolique : concentre suffisamment si le soleil est très fort.',
+    ],
+    attention: [
+      'Fonctionne uniquement par soleil direct intense — inutile par ciel voilé ou ombre.',
+      'L\'amadou doit être carbonisé (noir) pour absorber la chaleur radiative.',
+      'Ne jamais focaliser le soleil vers les yeux — risque de brûlure rétinienne irréversible.',
+    ]
+  },
+
+  {
+    id: 'feu-entretien',
+    categoryId: 'feu',
+    subcategoryId: 'types',
+    type: 'technique',
+    title: 'Entretien et gestion des braises',
+    summary: 'Gérer un feu, c\'est gérer ses braises. Un bon lit de braises est plus utile qu\'une flamme haute pour la cuisson et la longévité.',
+    conditions: ['Feu établi', 'Cuisson ou nuit souhaitées'],
+    needs: ['Bois de différents calibres', 'Attisoir (bâton)'],
+    steps: [
+      'Ne pas alimenter trop souvent : un feu qui tire bien se gère avec peu de bois ajouté régulièrement.',
+      'Pour la cuisson : laisser le bois se réduire en braises avant de poser le récipient (flamme = suie, braises = cuisson uniforme).',
+      'Tasser les braises avec un bâton pour les rassembler et intensifier la chaleur.',
+      'Pour rallumer un feu assoupi : souffler à la base des braises et ajouter du petit bois fin.',
+      'Conserver les braises la nuit : les recouvrir de cendres légèrement (elles resteront actives plusieurs heures).',
+    ],
+    attention: [
+      'Un feu "mort" peut avoir des braises actives sous les cendres pendant 12-24h — ne jamais camper sur des cendres chaudes.',
+      'Noyer les braises en fin de bivouac avec de l\'eau et mélanger pour s\'assurer de l\'extinction complète.',
+      'Une fumée blanche épaisse = feu qui étouffe. Ouvrir l\'aération à la base.',
+    ]
+  },
+
+  {
+    id: 'feu-cuisson',
+    categoryId: 'feu',
+    subcategoryId: 'types',
+    type: 'technique',
+    title: 'Techniques de cuisson au feu de bois',
+    summary: 'Plusieurs techniques permettent de cuire efficacement sans équipement — embroche, papillote d\'argile, braises directes, pierre chaude.',
+    conditions: ['Feu de braises établi', 'Aliments à cuire'],
+    needs: ['Bâton vert non résineux (brochette)', 'Argile (optionnel)', 'Pierre plate non calcaire (optionnel)'],
+    steps: [
+      'Brochette directe : embrocher la viande sur un bâton vert (non résineux), maintenir au-dessus des braises en tournant.',
+      'Cuisson en papillote végétale : envelopper l\'aliment dans des feuilles larges (chou sauvage, bardane) et poser sur les braises 15-20 min.',
+      'Papillote d\'argile : enduire l\'aliment d\'argile de 2-3 cm et poser dans les braises vives 30-45 min. La croûte cuite s\'ouvre et emporte les plumes ou squames.',
+      'Pierre chauffante : poser une pierre plate (non calcaire, non poreuse) sur le feu 20 min, y cuire directement (poisson, galette).',
+      'Cuisson directe dans les braises : tubercules, pommes de terre, châtaignes incisées — enterrer 20-30 min.',
+    ],
+    attention: [
+      'Éviter les pierres calcaires (grès, calcaire poreux) au feu — elles éclatent sous la chaleur.',
+      'Ne jamais utiliser de bâton résineux (sapin, pin) — transfert de résine et goût désagréable.',
+      'La viande sauvage doit toujours être cuite à cœur (pas saignante) — risque de Trichinella et autres parasites.',
+    ]
+  },
 
 ];
+
+
 
 // ── Index de recherche ──────────────────────────────────────
 export function buildSearchIndex() {

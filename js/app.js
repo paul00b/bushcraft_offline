@@ -106,7 +106,7 @@ function renderHome() {
           id="home-search"
           class="search-input"
           type="search"
-          placeholder="Rechercher une technique, plante, nœud…"
+          placeholder="Rechercher…"
           autocomplete="off"
           aria-label="Recherche"
         />
