@@ -113,15 +113,14 @@ function renderHome() {
         <button id="search-clear" class="search-clear hidden" aria-label="Effacer">${ICON.close}</button>
       </div>
 
-      <div class="section-label">Catégories</div>
     </div>
 
     <div class="page">
       <div class="cat-grid">${catCards}</div>
     </div>
 
-    <button class="btn-download-all" id="btn-dl-all" aria-label="Tout télécharger">
-      ${ICON.download} Tout télécharger
+    <button class="btn-download-all" id="btn-dl-all" aria-label="Télécharger les médias">
+      ${ICON.download} Télécharger les médias
     </button>
   `);
 
