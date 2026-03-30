@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" fill="#000000"/>
+  <circle cx="96" cy="96" r="88" fill="none" stroke="#4a7c59" stroke-width="3"/>
+  <!-- Flame -->
+  <path d="M96 48 C80 68 68 80 72 96 C74 104 80 110 88 112 C84 104 86 96 92 92 C92 100 96 108 100 112 C108 110 116 104 120 96 C124 80 112 68 96 48Z" fill="#4a7c59"/>
+  <path d="M96 72 C90 82 88 90 92 100 C94 105 96 108 100 112 C102 106 102 98 98 92 C100 96 102 100 104 104 C108 96 106 86 96 72Z" fill="#2a4a35"/>
+  <!-- Tree outline -->
+  <path d="M76 144 L86 124 L80 124 L90 108 L84 108 L96 90 L108 108 L102 108 L112 124 L106 124 L116 144Z" fill="none" stroke="#4a7c59" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>
