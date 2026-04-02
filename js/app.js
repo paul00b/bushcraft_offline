@@ -143,6 +143,13 @@ function renderHome() {
 
   // Download all
   document.getElementById('btn-dl-all').addEventListener('click', downloadAll);
+
+  areAllMediaCached().then(allCached => {
+    const btn = document.getElementById('btn-dl-all');
+    if (allCached && btn) {
+      btn.classList.add('hidden');
+    }
+  });
 }
 
 // ── SEARCH ────────────────────────────────────────────────
@@ -525,6 +532,16 @@ async function downloadAll() {
 
   progEl.innerHTML = `<span style="color:var(--accent)">✓ Tous les médias sont téléchargés (${cards.length})</span>`;
   showToast(`${cards.length} médias enregistrés !`);
+}
+
+async function areAllMediaCached() {
+  const cardsWithMedia = CARDS.filter(c => c.photo);
+  if (!cardsWithMedia.length) return true;
+  for (const card of cardsWithMedia) {
+    const cached = await db.getMedia(card.id, card.photo.url).catch(() => null);
+    if (!cached) return false;
+  }
+  return true;
 }
 
 // ── SETTINGS ──────────────────────────────────────────────
