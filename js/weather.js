@@ -88,14 +88,14 @@ export function renderWeatherCard(weather, { escHtml }) {
       </div>`;
   }
 
-  const daysHtml = weather.days.slice(0, 5).map(d => {
+  const daysHtml = weather.days.slice(0, 7).map(d => {
     const dayName = new Date(d.date).toLocaleDateString('fr-FR', { weekday: 'short' });
     return `
       <div class="weather-day">
         <div class="weather-day-name">${dayName}</div>
         <div class="weather-day-temp">${Math.round(d.tempMin)}° / ${Math.round(d.tempMax)}°</div>
-        <div class="weather-day-detail">${d.precipitation > 0 ? d.precipitation + 'mm' : '—'}</div>
-        <div class="weather-day-detail">${Math.round(d.windMax)} km/h</div>
+        <div class="weather-day-detail">${weatherCodeLabel(d.code)}</div>
+        <div class="weather-day-detail">${d.precipitation > 0 ? d.precipitation + 'mm' : '—'} · ${Math.round(d.windMax)} km/h</div>
       </div>`;
   }).join('');
 

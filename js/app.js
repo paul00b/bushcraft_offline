@@ -486,21 +486,24 @@ async function renderCard(cardId) {
   // ── Hydrater note
   const ta = document.getElementById('note-ta');
   const noteSaved = document.getElementById('note-saved');
-  db.getNote(cardId).then(text => { if (ta) ta.value = text; });
+
+  // Single read: use custom card's embedded note as default if no saved note exists
+  const savedNote = await db.getNote(cardId);
+  if (ta) {
+    if (savedNote) {
+      ta.value = savedNote;
+    } else if (isCustom && card.note) {
+      ta.value = card.note;
+      db.saveNote(cardId, card.note);
+    }
+  }
+
   ta && ta.addEventListener('input', debounce(() => {
     db.saveNote(cardId, ta.value);
     noteSaved.textContent = 'Sauvegardée';
     noteSaved.classList.add('visible');
     setTimeout(() => { noteSaved.classList.remove('visible'); noteSaved.textContent = ''; }, 1800);
   }, 800));
-
-  if (isCustom && card.note) {
-    const existingNote = await db.getNote(cardId);
-    if (!existingNote) {
-      db.saveNote(cardId, card.note);
-      if (ta) ta.value = card.note;
-    }
-  }
 
   // ── Hydrater photos
   hydratePhotos(cardId);
@@ -513,13 +516,13 @@ async function renderMediaSection(card) {
 
   const cached = await db.getMedia(card.id, card.photo.url).catch(() => null);
   const hasImg = !!cached;
-  const srcAttr = cached ? `src="${URL.createObjectURL(cached.blob)}"` : '';
+  const objectUrl = cached ? URL.createObjectURL(cached.blob) : '';
 
   return `
     <div class="card-section">
       <div class="card-media">
         ${hasImg
-          ? `<img ${srcAttr} alt="${escHtml(card.title)}" loading="lazy">`
+          ? `<img src="${objectUrl}" alt="${escHtml(card.title)}" loading="lazy" onload="URL.revokeObjectURL(this.src)">`
           : `<div class="card-media-placeholder">
                ${ICON.download}
                <span>Image non chargée</span>
@@ -682,7 +685,7 @@ async function renderSettings() {
         </div>
       </div>
 
-      <div class="settings-version">Bushcraft Field Guide — V1<br>Données stockées localement sur cet appareil</div>
+      <div class="settings-version">Bushcraft Field Guide — V2<br>Données stockées localement sur cet appareil</div>
 
       <input type="file" id="import-file" accept=".json" style="display:none">
     </div>
@@ -701,8 +704,9 @@ async function renderSettings() {
   document.getElementById('btn-update').addEventListener('click', async () => {
     showToast('Vérification en cours…');
     try {
-      // Delete static asset cache so SW re-fetches fresh files on next load
-      await caches.delete('bushcraft-v1');
+      // Delete all versioned static caches so SW re-fetches fresh files on next load
+      const cacheKeys = await caches.keys();
+      await Promise.all(cacheKeys.filter(k => k.startsWith('bushcraft-v')).map(k => caches.delete(k)));
       // Ask SW to check for a new version
       const reg = await navigator.serviceWorker.getRegistration();
       if (reg) await reg.update();

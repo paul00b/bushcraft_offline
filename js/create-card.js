@@ -33,6 +33,7 @@ export function renderCreateForm(app, { showToast, escHtml, topbar, ICON }) {
           <div class="create-fields">
             <input type="text" id="cf-title" class="create-input" placeholder="Titre de la fiche" required maxlength="120">
             <select id="cf-category" class="create-input">${catOptions}</select>
+            <select id="cf-subcategory" class="create-input hidden"></select>
             <textarea id="cf-summary" class="create-input" placeholder="Résumé (2 lignes max)" rows="2" maxlength="250"></textarea>
           </div>
         </div>
@@ -61,7 +62,7 @@ export function renderCreateForm(app, { showToast, escHtml, topbar, ICON }) {
           <div id="cf-photos-preview" class="photos-gallery"></div>
           <label class="btn-add-photo">
             ${ICON.camera} Ajouter une photo
-            <input type="file" accept="image/*" capture="environment" class="input-photo" id="cf-photo-input" multiple>
+            <input type="file" accept="image/*" class="input-photo" id="cf-photo-input" multiple>
           </label>
         </div>
 
@@ -99,6 +100,25 @@ function hydrateForm() {
   btnTech.addEventListener('click', () => switchType('technique'));
   btnNat.addEventListener('click', () => switchType('naturel'));
 
+  // Subcategory selector
+  const catSelect = document.getElementById('cf-category');
+  const subSelect = document.getElementById('cf-subcategory');
+
+  function updateSubcategories() {
+    const cat = CATEGORIES.find(c => c.id === catSelect.value);
+    const subs = cat && cat.subcategories;
+    if (subs && subs.length) {
+      subSelect.innerHTML = subs.map(s => `<option value="${s.id}">${s.label}</option>`).join('');
+      subSelect.classList.remove('hidden');
+    } else {
+      subSelect.innerHTML = '';
+      subSelect.classList.add('hidden');
+    }
+  }
+
+  catSelect.addEventListener('change', updateSubcategories);
+  updateSubcategories();
+
   // Steps
   const stepsContainer = document.getElementById('cf-steps');
   addStepInput(stepsContainer);
@@ -128,10 +148,13 @@ function hydrateForm() {
 
     const id = 'custom-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
     const categoryId = document.getElementById('cf-category').value;
+    const subEl = document.getElementById('cf-subcategory');
+    const subcategoryId = subEl && !subEl.classList.contains('hidden') && subEl.value ? subEl.value : undefined;
 
     const card = {
       id,
       categoryId,
+      subcategoryId,
       type: selectedType,
       title,
       summary: document.getElementById('cf-summary').value.trim(),

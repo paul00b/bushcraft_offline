@@ -1053,10 +1053,13 @@ select.create-input {
 
 .weather-days {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(7, minmax(56px, 1fr));
   gap: 4px;
   padding: 12px 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.weather-days::-webkit-scrollbar { display: none; }
 
 .weather-day {
   display: flex;
