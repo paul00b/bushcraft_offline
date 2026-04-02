@@ -891,6 +891,216 @@ ul, ol { list-style: none; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
 
+/* ── FAB (Floating Action Button) ──────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: calc(20px + var(--safe-bottom));
+  right: calc(20px + var(--safe-right));
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(74, 124, 89, 0.4);
+  z-index: 40;
+  transition: transform 80ms ease, opacity var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+.fab:active { transform: scale(0.92); }
+
+/* ── Custom card badge ─────────────────────────────────────── */
+.badge-perso {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--accent-dim);
+  border: 1px solid rgba(74, 124, 89, 0.3);
+  color: #7dba92;
+  margin-left: 6px;
+}
+
+/* ── Create form ───────────────────────────────────────────── */
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.create-type-switch {
+  display: flex;
+  gap: 8px;
+}
+
+.create-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--text);
+  transition: border-color var(--transition);
+}
+.create-input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+.create-input::placeholder { color: var(--text-faint); }
+
+select.create-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.create-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.create-step-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-add-step {
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px dashed rgba(74, 124, 89, 0.3);
+  margin-top: 4px;
+  transition: background var(--transition);
+}
+.btn-add-step:hover { background: rgba(74, 124, 89, 0.25); }
+
+.btn-create-save {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 12px;
+  transition: opacity var(--transition);
+}
+.btn-create-save:active { opacity: 0.8; }
+
+/* ── Weather card ──────────────────────────────────────────── */
+.weather-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.weather-card-empty { border-style: dashed; }
+
+.weather-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.weather-icon { font-size: 16px; }
+
+.weather-meta {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-faint);
+}
+
+.weather-card-body {
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.weather-empty-msg {
+  color: var(--text-faint);
+  font-size: 14px;
+}
+
+.weather-days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  padding: 12px 8px;
+}
+
+.weather-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+}
+
+.weather-day-name {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.weather-day-temp {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.weather-day-detail {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.btn-weather-save,
+.btn-weather-refresh {
+  display: block;
+  width: 100%;
+  padding: 11px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border-top: 1px solid var(--border);
+  transition: background var(--transition);
+  text-align: center;
+}
+.btn-weather-save:hover,
+.btn-weather-refresh:hover { background: rgba(74, 124, 89, 0.25); }
+
 /* ── Responsive (tablette/desktop) ─────────────────────────── */
 @media (min-width: 480px) {
   .cat-grid { grid-template-columns: repeat(3, 1fr); }
