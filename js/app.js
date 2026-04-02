@@ -6,6 +6,7 @@ import { CATEGORIES, CARDS, buildSearchIndex, getCard, getCategory, getCardsByCa
 import * as db from './db.js';
 import * as router from './router.js';
 import { renderCreateForm, setOnSave } from './create-card.js';
+import { getWeatherData, renderWeatherCard, requestLocationAndSave } from './weather.js';
 
 // ── State ─────────────────────────────────────────────────
 const app    = document.getElementById('app');
@@ -102,6 +103,7 @@ function renderCreateCard() {
 // ── HOME ──────────────────────────────────────────────────
 async function renderHome() {
   const customCards = await db.getAllCustomCards();
+  const weather = await getWeatherData();
   const catCards = CATEGORIES.map(cat => {
     const baseCount = CARDS.filter(c => c.categoryId === cat.id).length;
     const customCount = customCards.filter(c => c.categoryId === cat.id).length;
@@ -146,6 +148,7 @@ async function renderHome() {
     </div>
 
     <div class="page">
+      ${renderWeatherCard(weather, { escHtml })}
       <div class="cat-grid">${catCards}</div>
     </div>
 
@@ -182,6 +185,15 @@ async function renderHome() {
       btn.classList.add('hidden');
     }
   });
+
+  // Weather button
+  const btnWeather = document.getElementById('btn-save-weather');
+  if (btnWeather) {
+    btnWeather.addEventListener('click', async () => {
+      const data = await requestLocationAndSave(showToast);
+      if (data) renderHome();
+    });
+  }
 }
 
 // ── SEARCH ────────────────────────────────────────────────

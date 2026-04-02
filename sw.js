@@ -54,6 +54,12 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  // Open-Meteo API → network only (no cache)
+  if (url.hostname.includes('open-meteo.com')) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
+
   // Assets statiques → cache-first
   e.respondWith(cacheFirst(e.request));
 });
