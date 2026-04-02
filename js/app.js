@@ -5,6 +5,7 @@
 import { CATEGORIES, CARDS, buildSearchIndex, getCard, getCategory, getCardsByCategory, getCategoryLabel } from '../data/content.js';
 import * as db from './db.js';
 import * as router from './router.js';
+import { renderCreateForm, setOnSave } from './create-card.js';
 
 // ── State ─────────────────────────────────────────────────
 const app    = document.getElementById('app');
@@ -17,14 +18,28 @@ let searchInput = null;
 let toastTimer  = null;
 
 // ── Init ──────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   searchIndex = buildSearchIndex();
+
+  const customCards = await db.getAllCustomCards();
+  customCards.forEach(card => {
+    const parts = [card.title, card.summary, card.nameLatin || '', card.description || '', (card.steps || []).join(' ')];
+    searchIndex.push({
+      id: card.id,
+      categoryId: card.categoryId,
+      title: card.title,
+      summary: card.summary,
+      searchText: parts.join(' ').toLowerCase(),
+      isCustom: true
+    });
+  });
 
   router.on('home',                 ()  => renderHome());
   router.on('cat/:catId',           (p) => renderCategory(p.catId, null));
   router.on('cat/:catId/:subId',    (p) => renderCategory(p.catId, p.subId));
   router.on('card/:cardId',         (p) => renderCard(p.cardId));
   router.on('settings',             ()  => renderSettings());
+  router.on('create',               ()  => renderCreateCard());
 
   router.start();
 });
@@ -74,10 +89,23 @@ function topbar(title, backHash = null, rightBtn = '') {
     </div>`;
 }
 
+// ── CREATE CARD ──────────────────────────────────────────
+function renderCreateCard() {
+  hideSearchOverlay();
+  renderCreateForm(app, { showToast, escHtml, topbar, ICON });
+  setOnSave((card) => {
+    showToast('Fiche créée !');
+    router.navigate(`#cat/${card.categoryId}`);
+  });
+}
+
 // ── HOME ──────────────────────────────────────────────────
-function renderHome() {
+async function renderHome() {
+  const customCards = await db.getAllCustomCards();
   const catCards = CATEGORIES.map(cat => {
-    const count = CARDS.filter(c => c.categoryId === cat.id).length;
+    const baseCount = CARDS.filter(c => c.categoryId === cat.id).length;
+    const customCount = customCards.filter(c => c.categoryId === cat.id).length;
+    const count = baseCount + customCount;
     return `
       <div class="cat-card" onclick="goCategory('${cat.id}')" role="button" tabindex="0" aria-label="${cat.label}">
         <div class="cat-card-icon">${cat.icon}</div>
@@ -123,6 +151,10 @@ function renderHome() {
 
     <button class="btn-download-all" id="btn-dl-all" aria-label="Télécharger les médias">
       ${ICON.download} Télécharger les médias
+    </button>
+
+    <button class="fab" onclick="router.navigate('#create')" aria-label="Créer une fiche">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
     </button>
   `);
 
@@ -190,7 +222,7 @@ function renderSearchResults(results, q) {
     );
     return `
       <div class="search-result-item" onclick="goCard('${item.id}')" role="button" tabindex="0">
-        <div class="search-result-title">${highlight(escHtml(item.title))}</div>
+        <div class="search-result-title">${highlight(escHtml(item.title))}${item.isCustom ? '<span class="badge-perso">perso</span>' : ''}</div>
         <div class="search-result-cat">${cat ? cat.label : ''}</div>
       </div>`;
   }).join('');
@@ -210,7 +242,7 @@ function hideSearchOverlay() {
 }
 
 // ── CATEGORY ──────────────────────────────────────────────
-function renderCategory(catId, subId) {
+async function renderCategory(catId, subId) {
   hideSearchOverlay();
   const cat = getCategory(catId);
   if (!cat) { router.navigate('#home', { replace: true }); return; }
@@ -218,6 +250,12 @@ function renderCategory(catId, subId) {
   const hasSubs = cat.subcategories && cat.subcategories.length > 0;
   const activeSub = subId || (hasSubs ? cat.subcategories[0].id : null);
   const cards = getCardsByCategory(catId, activeSub);
+
+  const customCards = await db.getCustomCardsByCategory(catId);
+  const filteredCustom = activeSub
+    ? customCards.filter(c => c.subcategoryId === activeSub)
+    : customCards;
+  const allCards = [...cards, ...filteredCustom];
 
   const tabs = hasSubs ? `
     <div class="subcats-tabs">
@@ -227,10 +265,10 @@ function renderCategory(catId, subId) {
       `).join('')}
     </div>` : '';
 
-  const cardList = cards.map(card => `
+  const cardList = allCards.map(card => `
     <div class="card-list-item" onclick="goCard('${card.id}')" role="button" tabindex="0">
       <div class="card-list-body">
-        <div class="card-list-title">${escHtml(card.title)}</div>
+        <div class="card-list-title">${escHtml(card.title)}${card.isCustom ? '<span class="badge-perso">perso</span>' : ''}</div>
         <div class="card-list-summary">${escHtml(card.summary)}</div>
       </div>
       <div class="card-list-arrow">${ICON.arrow}</div>
@@ -248,7 +286,14 @@ function renderCategory(catId, subId) {
 // ── CARD ──────────────────────────────────────────────────
 async function renderCard(cardId) {
   hideSearchOverlay();
-  const card = getCard(cardId);
+  let card = getCard(cardId);
+  let isCustom = false;
+
+  if (!card) {
+    card = await db.getCustomCard(cardId);
+    isCustom = true;
+  }
+
   if (!card) { router.navigate('#home', { replace: true }); return; }
 
   const cat = getCategory(card.categoryId);
@@ -379,6 +424,20 @@ async function renderCard(cardId) {
       </div>`;
   }
 
+  // ── Custom card inline photos
+  if (isCustom && card.photos && card.photos.length) {
+    innerHtml += `
+      <div class="card-section">
+        <div class="card-section-title">Photos</div>
+        <div class="photos-gallery">
+          ${card.photos.map(dataUrl => `
+            <div class="photo-thumb">
+              <img src="${dataUrl}" alt="Photo" loading="lazy">
+            </div>`).join('')}
+        </div>
+      </div>`;
+  }
+
   // ── Note personnelle (placeholder, hydraté après)
   innerHtml += `
     <div class="card-section">
@@ -403,8 +462,12 @@ async function renderCard(cardId) {
       </div>
     </div>`;
 
+  const deleteBtn = isCustom
+    ? `<button class="btn-icon" onclick="deleteCustomCard_('${cardId}')" aria-label="Supprimer" style="color:var(--danger-text)">${ICON.trash}</button>`
+    : '';
+
   setPage(`
-    ${topbar(cat ? cat.label : 'Fiche', backHash)}
+    ${topbar(cat ? cat.label : 'Fiche', backHash, deleteBtn)}
     <div class="page card-page">${innerHtml}</div>
   `);
 
@@ -418,6 +481,14 @@ async function renderCard(cardId) {
     noteSaved.classList.add('visible');
     setTimeout(() => { noteSaved.classList.remove('visible'); noteSaved.textContent = ''; }, 1800);
   }, 800));
+
+  if (isCustom && card.note) {
+    const existingNote = await db.getNote(cardId);
+    if (!existingNote) {
+      db.saveNote(cardId, card.note);
+      if (ta) ta.value = card.note;
+    }
+  }
 
   // ── Hydrater photos
   hydratePhotos(cardId);
@@ -670,6 +741,12 @@ window.deletePhoto = async (id, cardId) => {
   await db.deletePhoto(id);
   hydratePhotos(cardId);
   showToast('Photo supprimée');
+};
+window.deleteCustomCard_ = async (id) => {
+  if (!confirm('Supprimer cette fiche personnelle ?')) return;
+  await db.deleteCustomCard(id);
+  showToast('Fiche supprimée');
+  router.navigate('#home');
 };
 
 // ── Media download button (delegated) ────────────────────
