@@ -54,6 +54,7 @@ const ICON = {
   export:   `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>`,
   import:   `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
   refresh:  `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`,
+  check:    `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
 };
 
 // ── Render helpers ────────────────────────────────────────
@@ -421,8 +422,8 @@ async function renderMediaSection(card) {
   if (!card.photo) return '';
 
   const cached = await db.getMedia(card.id, card.photo.url).catch(() => null);
+  const hasImg = !!cached;
   const srcAttr = cached ? `src="${URL.createObjectURL(cached.blob)}"` : '';
-  const hasImg  = !!cached;
 
   return `
     <div class="card-section">
@@ -435,10 +436,11 @@ async function renderMediaSection(card) {
              </div>`}
         ${card.photo.credit ? `<div class="card-media-credit">${escHtml(card.photo.credit)}</div>` : ''}
       </div>
-      ${!hasImg ? `
-        <button class="btn-dl-media" id="btn-dl-card-media" data-url="${escHtml(card.photo.url)}" data-cardid="${card.id}">
-          ${ICON.download} Télécharger ce média
-        </button>` : ''}
+      ${hasImg
+        ? `<div class="media-offline-badge">${ICON.check} Disponible hors-ligne</div>`
+        : `<button class="btn-dl-media" id="btn-dl-card-media" data-url="${escHtml(card.photo.url)}" data-cardid="${card.id}">
+            ${ICON.download} Télécharger ce média
+          </button>`}
     </div>`;
 }
 
