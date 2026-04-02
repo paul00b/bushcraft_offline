@@ -4,7 +4,7 @@
 // ============================================================
 
 const DB_NAME    = 'bushcraft-db';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 let _db = null;
 
@@ -30,6 +30,16 @@ function openDB() {
       if (!db.objectStoreNames.contains('mediaCache')) {
         const media = db.createObjectStore('mediaCache', { keyPath: 'key' });
         media.createIndex('cardId', 'cardId');
+      }
+
+      if (!db.objectStoreNames.contains('customCards')) {
+        const custom = db.createObjectStore('customCards', { keyPath: 'id' });
+        custom.createIndex('categoryId', 'categoryId');
+        custom.createIndex('createdAt', 'createdAt');
+      }
+
+      if (!db.objectStoreNames.contains('weather')) {
+        db.createObjectStore('weather', { keyPath: 'id' });
       }
     };
 
@@ -118,44 +128,97 @@ export async function getMediaCount() {
   return promisifyReq(store.count());
 }
 
+// ── Fiches personnelles ───────────────────────────────────
+
+export async function saveCustomCard(card) {
+  const { store } = await tx('customCards', 'readwrite');
+  return promisifyReq(store.put(card));
+}
+
+export async function getCustomCard(id) {
+  const { store } = await tx('customCards');
+  return promisifyReq(store.get(id));
+}
+
+export async function getAllCustomCards() {
+  const { store } = await tx('customCards');
+  return promisifyReq(store.getAll());
+}
+
+export async function getCustomCardsByCategory(catId) {
+  const { store } = await tx('customCards');
+  const index = store.index('categoryId');
+  return promisifyReq(index.getAll(catId));
+}
+
+export async function deleteCustomCard(id) {
+  const { store } = await tx('customCards', 'readwrite');
+  return promisifyReq(store.delete(id));
+}
+
+// ── Météo ─────────────────────────────────────────────────
+
+export async function saveWeather(data) {
+  const { store } = await tx('weather', 'readwrite');
+  return promisifyReq(store.put({ id: 'current', ...data, savedAt: Date.now() }));
+}
+
+export async function getWeather() {
+  const { store } = await tx('weather');
+  return promisifyReq(store.get('current'));
+}
+
+export async function clearWeather() {
+  const { store } = await tx('weather', 'readwrite');
+  return promisifyReq(store.delete('current'));
+}
+
 // ── Export / Import ────────────────────────────────────────
 
 export async function exportAll() {
-  const [notes, photos, media] = await Promise.all([
+  const [notes, photos, media, customCards] = await Promise.all([
     (async () => { const { store } = await tx('notes'); return promisifyReq(store.getAll()); })(),
     getAllPhotos(),
-    getAllCachedMedia()
+    getAllCachedMedia(),
+    getAllCustomCards()
   ]);
 
-  return JSON.stringify({ version: 1, exportedAt: Date.now(), notes, photos, media }, null, 2);
+  return JSON.stringify({ version: 2, exportedAt: Date.now(), notes, photos, media, customCards }, null, 2);
 }
 
 export async function importAll(jsonString) {
   let data;
   try { data = JSON.parse(jsonString); } catch { throw new Error('JSON invalide'); }
-
   if (!data.version) throw new Error('Format non reconnu');
 
   const db = await openDB();
 
   await new Promise((resolve, reject) => {
-    const transaction = db.transaction(['notes', 'photos', 'mediaCache'], 'readwrite');
+    const storeNames = ['notes', 'photos', 'mediaCache'];
+    if (db.objectStoreNames.contains('customCards')) storeNames.push('customCards');
+    const transaction = db.transaction(storeNames, 'readwrite');
     transaction.oncomplete = resolve;
-    transaction.onerror    = (e) => reject(e.target.error);
+    transaction.onerror = (e) => reject(e.target.error);
 
     const notesStore = transaction.objectStore('notes');
     const photosStore = transaction.objectStore('photos');
-    const mediaStore  = transaction.objectStore('mediaCache');
+    const mediaStore = transaction.objectStore('mediaCache');
 
     notesStore.clear();
     photosStore.clear();
     mediaStore.clear();
 
-    (data.notes  || []).forEach(n => notesStore.add(n));
+    (data.notes || []).forEach(n => notesStore.add(n));
     (data.photos || []).forEach(p => {
       const { id: _id, ...rest } = p;
       photosStore.add(rest);
     });
-    (data.media  || []).forEach(m => mediaStore.add(m));
+    (data.media || []).forEach(m => mediaStore.add(m));
+
+    if (db.objectStoreNames.contains('customCards')) {
+      const customStore = transaction.objectStore('customCards');
+      customStore.clear();
+      (data.customCards || []).forEach(c => customStore.add(c));
+    }
   });
 }
