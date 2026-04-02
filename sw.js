@@ -16,6 +16,8 @@ const STATIC_ASSETS = [
   '/js/db.js',
   '/js/router.js',
   '/data/content.js',
+  '/js/create-card.js',
+  '/js/weather.js',
   '/icons/icon-192.svg',
   '/icons/icon-512.svg',
 ];
