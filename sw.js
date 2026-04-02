@@ -4,7 +4,7 @@
 // Network-first + fallback pour images Wikimedia
 // ============================================================
 
-const CACHE_VERSION = 'bushcraft-v1';
+const CACHE_VERSION = 'bushcraft-v2';
 const MEDIA_CACHE   = 'bushcraft-media-v1';
 
 const STATIC_ASSETS = [
